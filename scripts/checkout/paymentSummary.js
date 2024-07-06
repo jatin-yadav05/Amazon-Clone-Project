@@ -34,9 +34,6 @@ let paymentSummaryHTML = '';
 
 export function renderPaymentSummary() {
     let [moneyTotal, shippingChargesTotal, taxTotal] = calculateTotal();
-    // moneyTotal = Number(formatCurrency(moneyTotal));
-    // shippingChargesTotal = Number(formatCurrency(shippingChargesTotal));
-    // taxTotal = Number(formatCurrency(taxTotal));
     let totalBeforeTax = moneyTotal + shippingChargesTotal
     let orderTotal =totalBeforeTax + taxTotal
 
