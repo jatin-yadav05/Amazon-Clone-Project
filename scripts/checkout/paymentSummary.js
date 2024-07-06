@@ -34,11 +34,11 @@ let paymentSummaryHTML = '';
 
 export function renderPaymentSummary() {
     let [moneyTotal, shippingChargesTotal, taxTotal] = calculateTotal();
-    moneyTotal = Number(formatCurrency(moneyTotal));
-    shippingChargesTotal = Number(formatCurrency(shippingChargesTotal));
-    taxTotal = Number(formatCurrency(taxTotal));
-    let totalBeforeTax = Number((moneyTotal + shippingChargesTotal).toFixed(2));
-    let orderTotal = Number((totalBeforeTax + taxTotal).toFixed(2));
+    // moneyTotal = Number(formatCurrency(moneyTotal));
+    // shippingChargesTotal = Number(formatCurrency(shippingChargesTotal));
+    // taxTotal = Number(formatCurrency(taxTotal));
+    let totalBeforeTax = moneyTotal + shippingChargesTotal
+    let orderTotal =totalBeforeTax + taxTotal
 
     paymentSummaryHTML = `
     <div class="payment-summary-title">
@@ -47,27 +47,27 @@ export function renderPaymentSummary() {
 
         <div class="payment-summary-row">
           <div class="js-payment-quantity">Items (${totalCartQuantity}):</div>
-          <div class="payment-summary-money js-payment-total">$${moneyTotal}</div>
+          <div class="payment-summary-money js-payment-total">$${formatCurrency(moneyTotal)}</div>
         </div>
 
         <div class="payment-summary-row">
           <div>Shipping &amp; handling:</div>
-          <div class="payment-summary-money js-total-shipping-charges">$${shippingChargesTotal}</div>
+          <div class="payment-summary-money js-total-shipping-charges">$${formatCurrency(shippingChargesTotal)}</div>
         </div>
 
         <div class="payment-summary-row subtotal-row">
           <div>Total before tax:</div>
-          <div class="payment-summary-money js-total-before-tax">$${totalBeforeTax}</div>
+          <div class="payment-summary-money js-total-before-tax">$${formatCurrency(totalBeforeTax)}</div>
         </div>
 
         <div class="payment-summary-row">
           <div>Estimated tax (10%):</div>
-          <div class="payment-summary-money js-estimated-tax">$${taxTotal}</div>
+          <div class="payment-summary-money js-estimated-tax">$${formatCurrency(taxTotal)}</div>
         </div>
 
         <div class="payment-summary-row total-row">
           <div>Order total:</div>
-          <div class="payment-summary-money js-final-total-money">$${orderTotal}</div>
+          <div class="payment-summary-money js-final-total-money">$${formatCurrency(orderTotal)}</div>
         </div>
 
         <button class="place-order-button button-primary">
