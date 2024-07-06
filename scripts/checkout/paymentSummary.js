@@ -40,7 +40,7 @@ export function renderPaymentSummary() {
     let totalBeforeTax = Number((moneyTotal + shippingChargesTotal).toFixed(2));
     let orderTotal = Number((totalBeforeTax + taxTotal).toFixed(2));
 
-    paymentSummaryHTML += `
+    paymentSummaryHTML = `
     <div class="payment-summary-title">
           Order Summary
         </div>

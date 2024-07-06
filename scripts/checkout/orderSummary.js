@@ -112,8 +112,8 @@ document.querySelectorAll('.js-delete-link')
       console.log(productId);
 
       const container = document.querySelector(`.js-cart-item-container-${productId}`);
-
       container.remove();
+      renderPaymentSummary();
     });
   });
 
@@ -129,4 +129,3 @@ document.querySelectorAll('.js-delivery-option')
   });
   updateCartItem();
 }
-renderProductSummary();
