@@ -1,6 +1,6 @@
 
 export let cart = JSON.parse(localStorage.getItem('cart'));
-
+export let totalCartQuantity;
 if (!cart) {
     cart = [{
         productId: 'e43638ce-6aa0-4b85-b27f-e1d07eb678c6',
@@ -19,7 +19,9 @@ export function updateCartItem() {
         cartQuantity += cartItem.quantity;
     });
 
+
     document.querySelector('.js-update-cart').innerHTML = `${cartQuantity} items`;
+    totalCartQuantity=cartQuantity;
     saveToLocal();
 }
 
