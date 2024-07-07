@@ -1,6 +1,6 @@
 import { cart,addtoCart,saveToLocal } from '../data/cart.js';
 // import * as cartModule from '../data/cart.js'
-import { products } from '../data/products.js';
+import { products} from '../data/products.js';
 import { formatCurrency } from './utility/money.js';
 
 let productsHtml = '';
@@ -37,14 +37,14 @@ products.forEach((product) => {
 
           <div class="product-rating-container">
             <img class="product-rating-stars"
-              src="images/ratings/rating-${10 * product.rating.stars}.png">
+              src="${product.getStarsUrl()}">
             <div class="product-rating-count link-primary">
               ${product.rating.count}
             </div>
           </div>
 
           <div class="product-price">
-            $${formatCurrency(product.priceCents)}
+            ${product.getPrice()}
           </div>
 
           <div class="product-quantity-container">
