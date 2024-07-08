@@ -1,9 +1,10 @@
 import { cart, removeFromCart, saveToLocal, updateCartItem, updateDeliveryOption } from "../../data/cart.js";
-import { products } from "../../data/products.js";
+import { products,loadProducts } from "../../data/products.js";
 import { formatCurrency } from "../utility/money.js";
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';  // default export
 import { deliveryOptions } from '../../data/deliveryOptions.js'
 import { renderPaymentSummary } from "./paymentSummary.js";
+
 
 export function renderProductSummary(){
 let cartHtml = '';

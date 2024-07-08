@@ -12,12 +12,10 @@ export function loadFromStorage() {
 export let totalCartQuantity;
 export function updateCartItem() {
     let cartQuantity = 0;
-
     cart.forEach((cartItem) => {
         cartQuantity += cartItem.quantity;
     });
-
-
+    // console.log('heeiiii');
     document.querySelector('.js-update-cart').innerHTML = `${cartQuantity} items`;
     totalCartQuantity = cartQuantity;
     saveToLocal();
