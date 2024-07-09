@@ -6,6 +6,26 @@ import { loadCart } from "../data/cart.js";
 
 
 
+async function loadPage() {
+    await loadProductsfetch();
+
+    await new Promise((resolve) => {
+        loadCart(() => {
+            resolve();
+        });
+    });
+
+    renderProductSummary();
+    renderPaymentSummary();
+
+    // return 'value1';        // Act as resolve('value1');
+}
+
+loadPage();
+
+/*
+
+
 Promise.all([
     loadProductsfetch(),
     new Promise((resolve) => {
@@ -20,7 +40,7 @@ Promise.all([
 });
 
 
-
+*/
 
 /*
 // We can use promises to create as many as steps we needed.

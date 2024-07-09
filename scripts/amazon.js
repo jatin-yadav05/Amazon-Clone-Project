@@ -12,7 +12,6 @@ let productsHtml = '';
 
 export function renderProductsGrid() {
 
-  let cartMainQuantity;
   function updateCart() {
     let cartQuantity = 0;
 
@@ -20,22 +19,18 @@ export function renderProductsGrid() {
       cartQuantity += cartItem.quantity;
     });
 
-    // document.querySelector('.js-select-quantity')
     if (cartQuantity !==0) {
       document.querySelector('.cart-quantity').innerHTML = `${cartQuantity}`;
+    }else if (cartQuantity === 0) {
+      document.querySelector('.cart-quantity').innerHTML = '';
     }
-    cartMainQuantity = cartQuantity;
     saveToLocal();
 
   }
 
-  function cartDisplay() {
-    if (cartMainQuantity === 0) {
-      document.querySelector('.cart-quantity').innerHTML = '';
-    }
-  }
-  cartDisplay();
+
   updateCart();
+  
   products.forEach((product) => {
     productsHtml += `
     <div class="product-container">

@@ -15,7 +15,7 @@ export function updateCartItem() {
     cart.forEach((cartItem) => {
         cartQuantity += cartItem.quantity;
     });
-    // console.log('heeiiii');
+    console.log(cartQuantity);
     document.querySelector('.js-update-cart').innerHTML = `${cartQuantity} items`;
     totalCartQuantity = cartQuantity;
     saveToLocal();
