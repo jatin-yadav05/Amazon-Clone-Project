@@ -1,17 +1,13 @@
 import { renderProductSummary } from "./checkout/orderSummary.js";
 import { renderPaymentSummary } from "./checkout/paymentSummary.js";
-import { loadProducts } from "../data/products.js";
+import { loadProducts, loadProductsfetch } from "../data/products.js";
 import { loadCart } from "../data/cart.js";
 // import '../data/backend-practice.js'  // Backend Used
 
 
 
 Promise.all([
-    new Promise((resolve) => {
-        loadProducts(() => {    // First Step
-            resolve('value1');
-        });
-    }),
+    loadProductsfetch(),
     new Promise((resolve) => {
         loadCart(() => {    // Second Step
             resolve('value2');
