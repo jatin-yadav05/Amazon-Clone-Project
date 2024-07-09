@@ -3,7 +3,6 @@ import { products,loadProducts } from "../../data/products.js";
 import { formatCurrency } from '../utility/money.js';
 
 
-
 function calculateTotal() {
     let totalPrice = 0;
     let totalShippingCharges = 0;

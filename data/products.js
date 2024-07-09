@@ -69,14 +69,14 @@ export function loadProducts(fun) {
       }
       return new Product(productDetails);
     });
-    console.log(products);
+    // console.log(products);
     fun();
   });
   productsReq.open('GET', 'https://supersimplebackend.dev/products');
   productsReq.send();
 }
 
-loadProducts();
+// loadProducts();
 
 
 /*
