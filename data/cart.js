@@ -79,7 +79,6 @@ export function updateDeliveryOption(productId, deliveryOptId) {
 
     matchingItem.deliveryOptionId = deliveryOptId;
     saveToLocal();
-
 }
 
 export function loadCart(fun) {
