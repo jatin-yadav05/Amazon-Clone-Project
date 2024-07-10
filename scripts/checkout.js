@@ -7,13 +7,18 @@ import { loadCart } from "../data/cart.js";
 
 
 async function loadPage() {
-    await loadProductsfetch();
+    try {
 
-    await new Promise((resolve) => {
-        loadCart(() => {
-            resolve();
+        await loadProductsfetch();
+
+        await new Promise((resolve) => {
+            loadCart(() => {
+                resolve();
+            });
         });
-    });
+    } catch (error) {  
+        console.log(`Unexpected Error. Please try again later. \n--> ${error} `);
+    }
 
     renderProductSummary();
     renderPaymentSummary();
