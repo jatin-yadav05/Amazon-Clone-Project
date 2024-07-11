@@ -4,6 +4,7 @@ import { formatCurrency } from '../utility/money.js';
 import { addOrder } from '../../data/orders.js';
 
 
+
 function calculateTotal() {
   let totalPrice = 0;
   let totalShippingCharges = 0;
@@ -89,12 +90,15 @@ export function renderPaymentSummary() {
           })
         });
         const order = await response.json();
-        // console.log(order); 
+        console.log(order); 
+        console.log(order.id);
+         
         addOrder(order);
       } catch (error) {
         console.log(`Unexpected Error. Please try again later. \n--> ${error} `);
       }
       window.location.href = 'orders.html';
+      localStorage.removeItem('cart');
     });
 
 }

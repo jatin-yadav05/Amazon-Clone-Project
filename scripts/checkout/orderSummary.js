@@ -130,3 +130,6 @@ document.querySelectorAll('.js-delivery-option')
   });
   updateCartItem();
 }
+
+
+console.log(cart);
