@@ -89,4 +89,5 @@ export function loadCart(fun) {
     });
     productsReq.open('GET', 'https://supersimplebackend.dev/cart');
     productsReq.send();
+
 }

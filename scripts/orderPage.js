@@ -48,7 +48,6 @@ function renderOrderPage() {
     const orderContainer = document.querySelector('.js-order-grid');
     orderContainer.innerHTML = orderDetailsHTML;
 
-    document.querySelector()
 }
 
 function renderOrderDetails(order, allProducts) {
