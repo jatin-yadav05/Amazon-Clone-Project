@@ -41,7 +41,6 @@ export function addtoCart(productId) {
         }
     });
     if (matchingItem) {
-
         matchingItem.quantity += realQuantity;
     } else {
         cart.push({

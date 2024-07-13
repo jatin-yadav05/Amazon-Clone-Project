@@ -6,8 +6,7 @@ import { calculateDate } from "./utility/dateStr.js";
 
 
 
-// console.log(allProducts);
-let ordersHTML = '';
+// console.log(products);
 let orderDetailsHTML = '';
 
 // function fullOrderPage(){
@@ -40,7 +39,7 @@ function renderOrderPage() {
         </div>
         </div>
           <div data-order-id="${orderElement.id}" class="order-details-grid js-order-details-grid">
-          ${renderOrderDetails(orderElement, products)}
+          ${renderOrderDetails(orderElement, orderElement.id)}
           </div>
         </div>
           `;
@@ -50,14 +49,14 @@ function renderOrderPage() {
 
 }
 
-function renderOrderDetails(order, allProducts) {
+function renderOrderDetails(order, orderId) {
     let innerOrderDetails = '';
 
     let matchingItem = [];
 
     order.products.forEach((product) => {
         let deliveryTime = calculateDate(product.estimatedDeliveryTime);
-        allProducts.forEach((oneProduct) => {
+        products.forEach((oneProduct) => {
             if (oneProduct.id === product.productId) {
                 matchingItem = oneProduct;
             }
@@ -84,16 +83,29 @@ function renderOrderDetails(order, allProducts) {
         </div>
         
         <div class="product-actions">
-        <a href="tracking.html">
-        <button class="track-package-button button-secondary">
+        <a href="tracking.html?orderId=${orderId}&productId=${matchingItem.id}">
+        <button class="track-package-button button-secondary js-track-package-${matchingItem.id}">
         Track package
         </button>
         </a>
         </div>
         `;
-        // console.log(innerOrderDetails);
     });
     return innerOrderDetails;
 }
 loadProducts(renderOrderPage);
+
+
+
+
+
+// onclick="
+// cart.push({
+// productId: ${matchingItem.id},
+// quantity: 1,
+// deliveryOptionId: '1'
+// });
+// window.location.href = 'checkout.html';"
+
+
 
