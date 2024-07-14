@@ -47,7 +47,7 @@ function renderOrderPage() {
     const orderContainer = document.querySelector('.js-order-grid');
     orderContainer.innerHTML = orderDetailsHTML;
 
-    document.querySelector('.js-cart-quantity').innerHTML=showCartQuantity();
+    document.querySelector('.js-cart-quantity').innerHTML = showCartQuantity();
 
 
     console.log('history');
@@ -61,7 +61,17 @@ function renderOrderPage() {
                 quantity: 1
             });
             saveToLocal();
-            window.location.href = "checkout.html";
+            document.querySelector('.js-cart-quantity').innerHTML = showCartQuantity();
+            const messageSpan = againBtn.querySelector('.buy-again-message');
+            const successSpan = againBtn.querySelector('.buy-again-success');
+
+            messageSpan.style.display = 'none';
+            successSpan.style.display = 'inline';
+
+            setTimeout(() => {
+                successSpan.style.display = 'none';
+                messageSpan.style.display = 'inline';
+            }, 1500);
         });
     });
 }
@@ -97,6 +107,7 @@ function renderOrderDetails(order, orderId) {
         <button data-item-id="${matchingItem.id}" class="button-primary buy-again-button js-buy-again-button">
         <img class="buy-again-icon" src="images/icons/buy-again.png">
         <span class="buy-again-message">Buy it again</span>
+        <span class="buy-again-success"> ✓ Added</span>
         </button>
         </div>
         

@@ -1,6 +1,7 @@
 import { orders } from "../data/orders.js";
-import { loadProducts, products ,loadProductsfetch} from "../data/products.js";
+import { loadProducts, products} from "../data/products.js";
 import { calculateDateWithDay } from "./utility/dateStr.js";
+import { showCartQuantity } from "./utility/displayCartQuantity.js";
 
 loadProducts(renderTrackPage);
 
@@ -27,6 +28,7 @@ function  renderTrackPage(){
     }
 });
 
+document.querySelector('.js-cart-quantity').innerHTML=showCartQuantity();
 
 date = calculateDateWithDay(date);
 products.forEach((product) => {
