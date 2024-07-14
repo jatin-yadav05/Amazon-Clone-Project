@@ -101,8 +101,6 @@ function deliveryOptionsHTML(matchingItem, cartItem) {
   });
   return html;
 }
-
-
 document.querySelector('.js-order-summary').innerHTML = cartHtml;
 
 document.querySelectorAll('.js-delete-link')

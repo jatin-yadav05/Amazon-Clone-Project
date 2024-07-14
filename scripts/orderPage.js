@@ -1,23 +1,23 @@
 import { orders } from "../data/orders.js";
 import { formatCurrency } from "./utility/money.js";
 import { loadProductsfetch, loadProducts, products } from "../data/products.js";
-import { cart } from "../data/cart.js";
+import { cart, updateDeliveryOption } from "../data/cart.js";
 import { calculateDate } from "./utility/dateStr.js";
-
+import { saveToLocal } from "../data/cart.js";
+import { showCartQuantity } from "./utility/displayCartQuantity.js";
 
 
 // console.log(products);
 let orderDetailsHTML = '';
-
 // function fullOrderPage(){
 
 // }
 
 function renderOrderPage() {
-
+    let orderReal;
     orders.forEach((orderElement) => {
+        orderReal = orderElement;
         let orderDate = calculateDate(orderElement.orderTime);
-        console.log(orderElement);
         orderDetailsHTML +=
             `
         <div class="order-container">
@@ -47,7 +47,25 @@ function renderOrderPage() {
     const orderContainer = document.querySelector('.js-order-grid');
     orderContainer.innerHTML = orderDetailsHTML;
 
+    document.querySelector('.js-cart-quantity').innerHTML=showCartQuantity();
+
+
+    console.log('history');
+    document.querySelectorAll(`.js-buy-again-button`).forEach((againBtn) => {
+        againBtn.addEventListener('click', () => {
+            const productElementId = againBtn.dataset.itemId;
+            console.log(productElementId);
+            cart.push({
+                deliveryOptionId: "1",
+                productId: productElementId,
+                quantity: 1
+            });
+            saveToLocal();
+            window.location.href = "checkout.html";
+        });
+    });
 }
+
 
 function renderOrderDetails(order, orderId) {
     let innerOrderDetails = '';
@@ -76,7 +94,7 @@ function renderOrderDetails(order, orderId) {
         <div class="product-quantity">
         Quantity: ${product.quantity}
         </div>
-        <button class="buy-again-button button-primary">
+        <button data-item-id="${matchingItem.id}" class="button-primary buy-again-button js-buy-again-button">
         <img class="buy-again-icon" src="images/icons/buy-again.png">
         <span class="buy-again-message">Buy it again</span>
         </button>
@@ -94,18 +112,3 @@ function renderOrderDetails(order, orderId) {
     return innerOrderDetails;
 }
 loadProducts(renderOrderPage);
-
-
-
-
-
-// onclick="
-// cart.push({
-// productId: ${matchingItem.id},
-// quantity: 1,
-// deliveryOptionId: '1'
-// });
-// window.location.href = 'checkout.html';"
-
-
-

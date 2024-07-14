@@ -34,7 +34,6 @@ export function addtoCart(productId) {
     const addedBtn = setTimeout(() => {
         document.querySelector(`.js-added-to-cart-${productId}`).style.opacity = '0';
     }, 1000);
-    // clearTimeout(addedBtn,1200);
     cart.forEach((cartItem) => {
         if (productId === cartItem.productId) {
             matchingItem = cartItem;
@@ -88,5 +87,4 @@ export function loadCart(fun) {
     });
     productsReq.open('GET', 'https://supersimplebackend.dev/cart');
     productsReq.send();
-
 }
